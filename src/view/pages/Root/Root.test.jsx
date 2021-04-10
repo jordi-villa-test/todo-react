@@ -5,7 +5,7 @@ import { TEST_IDS } from './constants';
 
 const renderRootPage = () => render(<Root />);
 
-describe('Test Root page', () => {
+describe('Page - Root page', () => {
   beforeEach(() => {
     renderRootPage();
   });
@@ -17,6 +17,11 @@ describe('Test Root page', () => {
     const wrapper = screen.getByTestId(TEST_IDS.wrapper);
     const header = screen.getByTestId(TEST_IDS.header);
     expect(wrapper).toContainElement(header);
+  });
+  it('renders the TodoList container', () => {
+    const wrapper = screen.getByTestId(TEST_IDS.wrapper);
+    const todoList = screen.getByTestId(TEST_IDS.list);
+    expect(wrapper).toContainElement(todoList);
   });
   it('renders the TodoInput container', () => {
     const wrapper = screen.getByTestId(TEST_IDS.wrapper);
