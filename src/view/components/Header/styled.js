@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const Header = styled.header`
-  background: #ffffff;
+  background: #0184e8;
+  color: white;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 24px;
-  box-shadow: rgb(209 230 255 / 57%) 0px 2px 24px 1px;
+  padding: 16px;
+  padding-left: 32px;
   width: 100%;
 `;
 
