@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store from '~/state/store';
+import store from 'src/state/store';
 import { Root } from './view/pages';
 import { GlobalStyle } from './view/styles';
 

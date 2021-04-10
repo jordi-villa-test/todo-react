@@ -5,11 +5,14 @@ const Layout = styled.div`
   background: white;
   margin: 0 auto;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   @media ${breakpoints.desktop} {
     max-width: 800px;
+    height: auto;
     max-height: 960px;
     margin-top: 96px;
     min-height: 0px;

@@ -19,7 +19,8 @@ function Todo({
   handleCheckClick,
   handleCompletedCheckClick,
   handleEditClick,
-  handleRemoveClick
+  handleRemoveClick,
+  ...props
 }) {
   const [areControlsShown, setAreControlsShown] = useState(false);
   const renderTodoContent = () => (
@@ -54,6 +55,7 @@ function Todo({
       data-testid={TEST_IDS.wrapper}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      {...props}
     >
       {isCompleted ? renderCompletedTodoContent() : renderTodoContent()}
       {areControlsShown && (

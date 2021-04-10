@@ -1,9 +1,16 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 import Root from './Root';
 import { TEST_IDS } from './constants';
+import store from 'src/state/store';
 
-const renderRootPage = () => render(<Root />);
+const renderRootPage = (reduxStore = store) =>
+  render(
+    <Provider store={reduxStore}>
+      <Root />
+    </Provider>
+  );
 
 describe('Page - Root page', () => {
   beforeEach(() => {
