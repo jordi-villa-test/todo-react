@@ -1,8 +1,8 @@
 import React from 'react';
 import TextField from 'src/view/components/TextField';
-import Button from 'src/view/components/Button';
+import Svg from 'src/view/components/Svg';
 import { TEST_IDS, INPUT_NAME, INPUT_PLACEHOLDER } from './constants';
-import { Wrapper } from './styled';
+import { Wrapper, Submit } from './styled';
 
 function TodoInput({ ...props }) {
   return (
@@ -12,7 +12,9 @@ function TodoInput({ ...props }) {
         name={INPUT_NAME}
         placeholder={INPUT_PLACEHOLDER}
       />
-      <Button data-testid={TEST_IDS.submit}>Add</Button>
+      <Submit data-testid={TEST_IDS.submit}>
+        <Svg icon="add" />
+      </Submit>
     </Wrapper>
   );
 }

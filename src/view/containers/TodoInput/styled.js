@@ -1,7 +1,11 @@
 import styled from 'styled-components';
+import Button from 'src/view/components/Button';
 
 export const Wrapper = styled.div`
   display: flex;
-  margin-top: 24px;
   width: 100%;
+`;
+
+export const Submit = styled(Button)`
+  border-radius: 0;
 `;

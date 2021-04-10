@@ -5,7 +5,7 @@ import TextField from './TextField';
 
 const renderTextField = (props) => render(<TextField {...props} />);
 
-describe('Container - ResultsList', () => {
+describe('Component - TextField', () => {
   it('renders the component', () => {
     renderTextField();
 
