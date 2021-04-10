@@ -8,6 +8,8 @@ const Header = styled.header`
   padding: 16px;
   padding-left: 32px;
   width: 100%;
+  font-size: 16px;
+  font-weight: 600;
 `;
 
 export default Header;
