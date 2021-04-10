@@ -1,5 +1,12 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from '~/state/store';
 
-ReactDOM.render(<div>Hello World</div>, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <div>Hello World</div>
+  </Provider>,
+  document.getElementById('root')
+);
