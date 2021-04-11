@@ -13,7 +13,6 @@ const Layout = styled.div`
   @media ${breakpoints.desktop} {
     max-width: 800px;
     height: auto;
-    max-height: 960px;
     margin-top: 96px;
     min-height: 0px;
     border-radius: 10px;

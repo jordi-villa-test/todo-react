@@ -39,5 +39,15 @@ describe('Container - TodoList', () => {
       const todos = await screen.findAllByTestId(TEST_IDS.todo);
       expect(todos).toHaveLength(mockEntries.length);
     });
+
+    it('renders a placeholder text if no todo is found', async () => {
+      const mockEntries = [];
+      const spy = jest.spyOn(redux, 'useSelector');
+      spy.mockReturnValue(mockEntries);
+      renderComponent();
+
+      const text = await screen.getByTestId(TEST_IDS.text);
+      expect(text).toBeInTheDocument();
+    });
   });
 });

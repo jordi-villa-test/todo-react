@@ -1,27 +1,25 @@
+import uuid4 from 'uuid4';
 import * as types from './types';
 
 export const initialState = {
-  todos: [
-    {
-      id: '1234',
-      title: 'uncompleted task',
-      isCompleted: false
-    },
-    {
-      id: '1235',
-      title: 'completed task',
-      isCompleted: true
-    }
-  ]
+  todos: []
 };
 
 const functions = {
   [types.INSERT_TODO]: addTodo
 };
 
-function addTodo(state) {
+function addTodo(state, { title }) {
+  const todo = {
+    id: uuid4(),
+    title,
+    isCompleted: false
+  };
+  const todos = [...state.todos, todo];
+
   return {
-    ...state
+    ...state,
+    todos
   };
 }
 

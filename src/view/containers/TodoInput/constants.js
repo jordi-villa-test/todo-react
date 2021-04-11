@@ -1,5 +1,5 @@
 export const TEST_IDS = {
-  wrapper: 'todo-input',
+  form: 'todo-input',
   input: 'todo-input__input',
   submit: 'todo-input__submit'
 };
