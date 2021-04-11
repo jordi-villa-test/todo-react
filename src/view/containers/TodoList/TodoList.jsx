@@ -1,12 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'src/state/react-redux';
 
 import { TEST_IDS } from './constants';
 import { EmptyText, Wrapper, Content } from './styled';
 import Todo from 'src/view/components/Todo';
-import { selectTodos, editTodo, removeTodo } from 'src/state/todos';
-import { completeTodo } from '../../../state/todos/actions';
+import {
+  selectTodos,
+  editTodo,
+  removeTodo,
+  completeTodo
+} from 'src/state/todos';
 
 function TodoList({ ...props }) {
   const dispatch = useDispatch();

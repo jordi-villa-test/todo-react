@@ -1,7 +1,7 @@
 import React from 'react';
-import { Provider, useDispatch } from 'react-redux';
-import * as redux from 'react-redux';
-import { cleanup, render, screen, fireEvent } from '@testing-library/react';
+import { Provider, useDispatch, useSelector } from 'src/state/react-redux';
+
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import { TEST_IDS } from './constants';
 import TodoList from './TodoList';
@@ -15,21 +15,23 @@ const renderComponent = (reduxStore = store) =>
     </Provider>
   );
 
-jest.mock('react-redux', () => ({
-  ...jest.requireActual('react-redux'),
+jest.mock('src/state/react-redux', () => ({
+  ...jest.requireActual('src/state/react-redux'),
+  useSelector: jest.fn(),
   useDispatch: jest.fn()
 }));
 
 describe('Container - TodoList', () => {
   window.prompt = jest.fn();
-  const spy = jest.spyOn(redux, 'useSelector');
   const mockTodo = {
     title: 'test',
     id: '12345',
     isCompleted: false
   };
-  afterEach(() => {
-    cleanup();
+  const mockEntries = [mockTodo, { ...mockTodo, id: 123456 }];
+
+  beforeEach(() => {
+    useSelector.mockImplementation(() => mockEntries);
   });
 
   describe('rendering', () => {
@@ -40,8 +42,6 @@ describe('Container - TodoList', () => {
     });
 
     it('renders x number of todos inside the wrapper based on state data', async () => {
-      const mockEntries = [mockTodo, { ...mockTodo, id: 123456 }];
-      spy.mockReturnValue(mockEntries);
       renderComponent();
 
       const todos = await screen.findAllByTestId(TEST_IDS.todo);
@@ -49,8 +49,8 @@ describe('Container - TodoList', () => {
     });
 
     it('renders a placeholder text if no todo is found', async () => {
-      const mockEntries = [];
-      spy.mockReturnValue(mockEntries);
+      const emptyMockEntries = [];
+      useSelector.mockImplementation(() => emptyMockEntries);
       renderComponent();
 
       const text = await screen.getByTestId(TEST_IDS.text);
@@ -59,18 +59,13 @@ describe('Container - TodoList', () => {
   });
 
   describe('test dispatches', () => {
-    const mockTodo = {
-      title: 'test',
-      id: '12345',
-      isCompleted: false
-    };
     const mockDispatch = jest.fn();
     const useDispatchMock = useDispatch;
     useDispatchMock.mockImplementation(() => mockDispatch);
+    const mockSingleEntry = [mockTodo];
 
     beforeEach(async () => {
-      const mockEntries = [mockTodo];
-      spy.mockReturnValue(mockEntries);
+      useSelector.mockImplementation(() => mockSingleEntry);
       renderComponent();
       const todo = await screen.getByTestId(TEST_IDS.todo);
       fireEvent.mouseOver(todo);

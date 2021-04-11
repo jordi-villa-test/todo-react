@@ -1,5 +1,5 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import { Provider } from 'src/state/react-redux';
 import { render, screen } from '@testing-library/react';
 import Root from './Root';
 import { TEST_IDS } from './constants';

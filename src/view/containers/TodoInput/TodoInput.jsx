@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from 'src/state/react-redux';
 
 import { TEST_IDS, INPUT_NAME, INPUT_PLACEHOLDER } from './constants';
 import { Wrapper, Submit } from './styled';
