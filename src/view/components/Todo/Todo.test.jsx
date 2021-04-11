@@ -78,43 +78,38 @@ describe('Component - Todo', () => {
   });
 
   describe('Firing events', () => {
-    const handleCheckClickFn = jest.fn();
-    const handleCompletedCheckClickFn = jest.fn();
-    const handleEditClickFn = jest.fn();
-    const handleRemoveClickFn = jest.fn();
+    const handleCompleteFn = jest.fn();
+    const handleEditFn = jest.fn();
+    const handleRemoveFn = jest.fn();
+    const idMock = '12345';
 
-    it('fires handleCheckClick onClick of check element', () => {
-      renderComponent({ handleCheckClick: handleCheckClickFn });
+    it('fires handleComplete onClick of wrapper', () => {
+      renderComponent({ handleComplete: handleCompleteFn, id: idMock });
+      const wrapper = screen.getByTestId(TEST_IDS.wrapper);
+      fireEvent.click(wrapper);
+      expect(handleCompleteFn).toHaveBeenCalledWith(idMock);
+    });
+    it('fires handleComplete onClick of check element', () => {
+      renderComponent({ handleComplete: handleCompleteFn, id: idMock });
       const check = screen.getByTestId(TEST_IDS.checkbox);
       fireEvent.click(check);
-      expect(handleCheckClickFn).toHaveBeenCalled();
+      expect(handleCompleteFn).toHaveBeenCalledWith(idMock);
     });
-
-    it('fires handleCompletedCheckClick onClick of completed check element', () => {
-      renderComponent({
-        isCompleted: true,
-        handleCompletedCheckClick: handleCompletedCheckClickFn
-      });
-      const check = screen.getByTestId(TEST_IDS.checkboxCompleted);
-      fireEvent.click(check);
-      expect(handleCompletedCheckClickFn).toHaveBeenCalled();
-    });
-
-    it('fires handleEditClick onClick of edit button', () => {
-      renderComponent({ handleEditClick: handleEditClickFn });
+    it('fires handleEdit onClick of edit button', () => {
+      renderComponent({ handleEdit: handleEditFn, id: idMock });
       const wrapper = screen.getByTestId(TEST_IDS.wrapper);
       fireEvent.mouseEnter(wrapper);
       const edit = screen.getByTestId(TEST_IDS.edit);
       fireEvent.click(edit);
-      expect(handleEditClickFn).toHaveBeenCalled();
+      expect(handleEditFn).toHaveBeenCalledWith(idMock);
     });
-    it('fires handleRemoveClick onClick of remove button', () => {
-      renderComponent({ handleRemoveClick: handleRemoveClickFn });
+    it('fires handleRemove onClick of remove button', () => {
+      renderComponent({ handleRemove: handleRemoveFn, id: idMock });
       const wrapper = screen.getByTestId(TEST_IDS.wrapper);
       fireEvent.mouseEnter(wrapper);
       const remove = screen.getByTestId(TEST_IDS.remove);
       fireEvent.click(remove);
-      expect(handleRemoveClickFn).toHaveBeenCalled();
+      expect(handleRemoveFn).toHaveBeenCalledWith(idMock);
     });
   });
 });

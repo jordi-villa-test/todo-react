@@ -8,8 +8,10 @@ export const Wrapper = styled.div`
   padding: 16px;
   padding-left: 32px;
   min-height: 70px;
+  cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: #f9fbff;
   }
 `;
@@ -44,6 +46,7 @@ export const ControlButton = styled(Button)`
   margin-left: 16px;
   padding: 8px;
   min-height: 0;
+  z-index: 2;
   svg {
     width: 20px;
     height: 20px;

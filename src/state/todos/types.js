@@ -1,3 +1,6 @@
 const MODULE_ID = '@TODOS';
 
 export const INSERT_TODO = `${MODULE_ID}/INSERT-TODO`;
+export const EDIT_TODO = `${MODULE_ID}/EDIT_TODO`;
+export const REMOVE_TODO = `${MODULE_ID}/REMOVE_TODO`;
+export const COMPLETE_TODO = `${MODULE_ID}/COMPLETE_TODO`;

@@ -6,7 +6,10 @@ export const initialState = {
 };
 
 const functions = {
-  [types.INSERT_TODO]: addTodo
+  [types.INSERT_TODO]: addTodo,
+  [types.EDIT_TODO]: editTodo,
+  [types.REMOVE_TODO]: removeTodo,
+  [types.COMPLETE_TODO]: completeTodo
 };
 
 function addTodo(state, { title }) {
@@ -16,6 +19,37 @@ function addTodo(state, { title }) {
     isCompleted: false
   };
   const todos = [...state.todos, todo];
+
+  return {
+    ...state,
+    todos
+  };
+}
+
+function editTodo(state, { title, id }) {
+  const todos = [...state.todos].map((todo) =>
+    todo.id === id ? { ...todo, title } : todo
+  );
+
+  return {
+    ...state,
+    todos
+  };
+}
+
+function removeTodo(state, { id }) {
+  const todos = [...state.todos].filter((todo) => todo.id !== id);
+
+  return {
+    ...state,
+    todos
+  };
+}
+
+function completeTodo(state, { id }) {
+  const todos = [...state.todos].map((todo) =>
+    todo.id === id ? { ...todo, isCompleted: true } : todo
+  );
 
   return {
     ...state,
