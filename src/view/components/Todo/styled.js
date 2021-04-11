@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Button from 'src/view/components/Button';
+import { breakpoints } from 'src/constants';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -17,7 +18,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Check = styled.button`
-  width: 24px;
+  min-width: 24px;
   height: 24px;
   margin-right: 16px;
   border: 2px solid #0184e8;
@@ -40,6 +41,20 @@ export const CompletedTitle = styled(Title)`
 
 export const Controls = styled.div`
   margin-left: auto;
+  flex-shrink: 0;
+  ${(props) =>
+    !props.isShown &&
+    `
+        & > * {
+          display: none;
+        }
+    `}
+
+  @media ${breakpoints.mobile} {
+    & > * {
+      display: inline-block;
+    }
+  }
 `;
 
 export const ControlButton = styled(Button)`

@@ -70,22 +70,20 @@ function Todo({
       {...props}
     >
       {isCompleted ? renderCompletedTodoContent() : renderTodoContent()}
-      {areControlsShown && (
-        <Controls>
-          <EditButton
-            data-testid={TEST_IDS.edit}
-            onClick={(e) => handleEditClick(e, id)}
-          >
-            <Svg icon="edit" />
-          </EditButton>
-          <RemoveButton
-            data-testid={TEST_IDS.remove}
-            onClick={(e) => handleRemoveClick(e, id)}
-          >
-            <Svg icon="trash" />
-          </RemoveButton>
-        </Controls>
-      )}
+      <Controls isShown={areControlsShown}>
+        <EditButton
+          data-testid={TEST_IDS.edit}
+          onClick={(e) => handleEditClick(e, id)}
+        >
+          <Svg icon="edit" />
+        </EditButton>
+        <RemoveButton
+          data-testid={TEST_IDS.remove}
+          onClick={(e) => handleRemoveClick(e, id)}
+        >
+          <Svg icon="trash" />
+        </RemoveButton>
+      </Controls>
     </Wrapper>
   );
 }

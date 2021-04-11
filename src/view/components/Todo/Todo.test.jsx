@@ -82,8 +82,8 @@ describe('Component - Todo', () => {
       const edit = screen.queryByTestId(TEST_IDS.edit);
       const remove = screen.queryByTestId(TEST_IDS.remove);
 
-      expect(edit).not.toBeInTheDocument();
-      expect(remove).not.toBeInTheDocument();
+      expect(edit).toHaveStyle({ display: 'none' });
+      expect(remove).toHaveStyle({ display: 'none' });
     });
   });
 
