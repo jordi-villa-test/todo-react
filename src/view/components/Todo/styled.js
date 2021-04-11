@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 
   &:hover,
   &:focus {
-    background: #f9fbff;
+    background: #e0efff;
   }
 `;
 

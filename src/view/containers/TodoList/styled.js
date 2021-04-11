@@ -4,6 +4,7 @@ import { breakpoints } from 'src/constants';
 export const Wrapper = styled.div`
   flex-grow: 1;
   overflow-y: scroll;
+  background: #f5faff;
 
   @media ${breakpoints.desktop} {
     max-height: 600px;
