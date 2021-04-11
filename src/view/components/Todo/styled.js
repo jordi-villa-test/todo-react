@@ -49,8 +49,7 @@ export const Controls = styled.div`
           display: none;
         }
     `}
-
-  @media ${breakpoints.mobile} {
+  @media ${breakpoints.tablet} {
     & > * {
       display: inline-block;
     }
