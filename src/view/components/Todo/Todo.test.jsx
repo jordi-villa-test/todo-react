@@ -63,17 +63,27 @@ describe('Component - Todo', () => {
     beforeEach(() => {
       renderComponent({ title: titleMock, isCompleted: true });
     });
-    it('renders an edit button', async () => {
+    it('renders an edit button', () => {
       const wrapper = screen.getByTestId(TEST_IDS.wrapper);
       fireEvent.mouseEnter(wrapper);
       const edit = screen.getByTestId(TEST_IDS.edit);
       expect(edit).toBeInTheDocument();
     });
-    it('renders a delete button', async () => {
+    it('renders a delete button', () => {
       const wrapper = screen.getByTestId(TEST_IDS.wrapper);
       fireEvent.mouseEnter(wrapper);
       const remove = screen.getByTestId(TEST_IDS.remove);
       expect(remove).toBeInTheDocument();
+    });
+
+    it('stops rendering controls on mouse leave', () => {
+      const wrapper = screen.getByTestId(TEST_IDS.wrapper);
+      fireEvent.mouseLeave(wrapper);
+      const edit = screen.queryByTestId(TEST_IDS.edit);
+      const remove = screen.queryByTestId(TEST_IDS.remove);
+
+      expect(edit).not.toBeInTheDocument();
+      expect(remove).not.toBeInTheDocument();
     });
   });
 
