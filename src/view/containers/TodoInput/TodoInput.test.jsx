@@ -1,5 +1,5 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import { Provider } from 'src/state/react-redux';
 import {
   cleanup,
   fireEvent,
@@ -7,13 +7,13 @@ import {
   screen,
   within
 } from '@testing-library/react';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from 'src/state/react-redux';
 import { TEST_IDS, INPUT_PLACEHOLDER } from './constants';
 import TodoInput from './TodoInput';
 import store from 'src/state/store';
 
-jest.mock('react-redux', () => ({
-  ...jest.requireActual('react-redux'),
+jest.mock('src/state/react-redux', () => ({
+  ...jest.requireActual('src/state/react-redux'),
   useDispatch: jest.fn()
 }));
 
