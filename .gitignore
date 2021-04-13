@@ -1,0 +1,8 @@
+.history
+.vscode
+.cache
+.DS_Store
+node_modules
+coverage
+dist
+junit.xml
